@@ -16,26 +16,17 @@ submit.on("click", function() {
   var filteredData = data.filter(aliens => aliens.datetime === inputValue);
   console.log(filteredData);
 
-  var date = filteredData.datetime;
-  var city = filteredData.city;
-  var state = filteredData.state;
-  var country = filteredData.country;
-  var shape = filteredData.shape;
-  var durationMinutes = filteredData.durationMinutes;
-  var comments = filteredData.comments;
+  var tbody = d3.select("tbody");
+  filteredData.forEach((dataRow) => {
+    var row = tbody.append("tr");
+    Object.values(dataRow).forEach((val) => {
+      var cell = row.append("td");
+        cell.text(val);
+      })
+});
 
-  for (var i = 0; i < filteredData.length; i++) {
-    var tbody = d3.select("tbody")
-    var row = tbody.append("tr")
-      row.append("td").text(`${date}`)
-      row.append("td").text(`${city}`)
-      row.append("td").text(`${state}`)       
-      row.append("td").text(`${country}`)
-      row.append("td").text(`${shape}`)
-      row.append("td").text(`${durationMinutes}`)
-      row.append("td").text(`${comments}`);
   }
-  });
+);
 
 // // renderTable renders the tbody
 function renderTable() {
