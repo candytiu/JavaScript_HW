@@ -27,19 +27,3 @@ submit.on("click", function() {
 
   }
 );
-
-// // renderTable renders the tbody
-function renderTable() {
-  for (var i = 0; i < date.length; i++) {
-    var aliens = data[i];
-    var realAliens = Object.keys(aliens);
-    var $row = $tbody.insertRow(i);
-    for (var j = 0; j < realAliens.length; j++) {
-      var varInput = areReal[j];
-      var $cell = $row.insertCell(j);
-      $cell.innerText = aliens[varInput];
-    }
-  }
-}
-
-renderTable(); 
